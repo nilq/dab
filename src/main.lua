@@ -1,4 +1,5 @@
-thing = require("project/")
+thing = require("project")
+local Model = require("model")
 local a = 0
 do
   local _with_0 = love
@@ -6,30 +7,21 @@ do
     point = {
       [1] = 100,
       [2] = 100,
-      [3] = 100
+      [3] = 100,
+      [4] = 100
     }
+    cube = Model("assets/suzanne.obj")
   end
   _with_0.update = function(dt)
+    _with_0.window.setTitle(tostring(_with_0.timer.getFPS()))
     a = a + dt
     point[1] = 100 * math.cos(a)
     point[2] = 100 * math.sin(a)
     point[3] = 100 * -math.cos(a)
+    point[4] = 100 * -math.sin(a)
   end
   _with_0.draw = function()
-    _with_0.graphics.setColor(0, 255, 0)
-    return thing.graphics.triangle(250, "fill", {
-      point[1],
-      200,
-      200
-    }, {
-      200,
-      point[2],
-      200
-    }, {
-      200,
-      200,
-      point[3]
-    })
+    return cube:debug_draw()
   end
   return _with_0
 end

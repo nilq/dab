@@ -33,7 +33,7 @@ circle = (fov, mode, p1, radius, segments) ->
   a, s = project_to 2, fov, unpack p1
 
   with love.graphics
-    .circle mode, a[1] * s, a[2] * s, radius, segments
+    .circle mode, a[1] * s, a[2] * s, radius * s, segments
 
 triangle = (fov, mode, p1, p2, p3) ->
   a, s   = project_to 2, fov, unpack p1
